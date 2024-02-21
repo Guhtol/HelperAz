@@ -13,7 +13,7 @@ Na pasta storage dentro do projeto Infrastructure adicone o json com o nome da s
 
 Via Commando
 ``` cmd
- cd PastaDoPojeto
+ cd CaminhoCompleto + PastadoProjeto -- exemplo C:\HelperAz
 .\installAndUpdateProject.ps1   
 ```
 **Obs:** Por enquanto o script está voltado para o windows utilizando power shell.
