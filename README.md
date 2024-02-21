@@ -1,6 +1,5 @@
 # HelperAz
-Projeto para enviar requisições Http para Azure Function com objetivo de testar localmente
-
+Projeto para auxiliar os teste de Azure Function Isolated.
 
 ## Configuração
 
@@ -18,11 +17,11 @@ Via Commando
  dotnet build -c Release
 ```
 
-2- O caminho do executável estára dentro da pasta HelperAz\src\Presentation\bin\Release\net7.0, copie o caminho completo até net7.0 e inclua nas variaveis de ambiente 
+2- O caminho do executável estára dentro da pasta HelperAz\src\Presentation\bin\Release\net7.0, copie o caminho completo até net8.0 e inclua nas variaveis de ambiente 
 
 Exemplo:
 ``` cmd
-  c:\git\HelperAz\src\Presentation\bin\Release\net7.0
+  c:\git\HelperAz\src\Presentation\bin\Release\net8.0
 ```
 
 ## Como utilizar
