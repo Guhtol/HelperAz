@@ -9,20 +9,14 @@ Na pasta storage dentro do projeto Infrastructure adicone o json com o nome da s
 
 ## Instação
 
-1- Realize o build em modo release da aplicação 
+1- Execute o script powershell installAndUpdateProject.ps1 que se encontra dentro da pasta raiz do projeto
 
 Via Commando
 ``` cmd
- cd \PastaDoPojeto
- dotnet build -c Release
+ cd PastaDoPojeto
+.\installAndUpdate.ps1     
 ```
-
-2- O caminho do executável estára dentro da pasta HelperAz\src\Presentation\bin\Release\net7.0, copie o caminho completo até net8.0 e inclua nas variaveis de ambiente 
-
-Exemplo:
-``` cmd
-  c:\git\HelperAz\src\Presentation\bin\Release\net8.0
-```
+**Obs:** Por enquanto o script está voltado para o windows utilizando power shell.
 
 ## Como utilizar
 
