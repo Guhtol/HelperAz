@@ -14,7 +14,7 @@ Na pasta storage dentro do projeto Infrastructure adicone o json com o nome da s
 Via Commando
 ``` cmd
  cd PastaDoPojeto
-.\installAndUpdate.ps1     
+.\installAndUpdateProject.ps1   
 ```
 **Obs:** Por enquanto o script está voltado para o windows utilizando power shell.
 
