@@ -1,5 +1,5 @@
 # HelperAz
-Projeto para auxiliar os teste de Azure Function Isolated.
+Projeto para auxiliar na depuração local de Azure Function Isolated.
 
 ## Configuração
 
