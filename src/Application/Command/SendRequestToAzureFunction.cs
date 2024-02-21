@@ -4,14 +4,10 @@ using Application.SeedWork;
 using Refit;
 
 namespace Application.Command;
-public class SendRequestToAzureFunction
+public class SendRequestToAzureFunction(IReadJsons readJsons, string azureFunctionUrl)
 {
-    private IReadJsons ReadJsons { get; }
-    public SendRequestToAzureFunction(IReadJsons readJsons)
-    {
-        ReadJsons = readJsons;
-    }
-
+    private IReadJsons ReadJsons { get; } = readJsons;
+    private string AzureFunctionUrl {get;} = azureFunctionUrl;
     public async Task ExecuteCommand()
     {
         Menu menuAzureFunctions = ReadJsons.FilesNames;
@@ -20,13 +16,13 @@ public class SendRequestToAzureFunction
         Console.WriteLine("Deseja editar o input para envio do azure funciton?");
         Menu menuEditInputAzureFunction = new Dictionary<int, string>
         {
-          {1, "Sim"},
-          {2, "Não"}
+          {1, "Não"},
+          {2, "Sim"}
         };
 
         (int keyOpenVsCode, _) = menuEditInputAzureFunction.StartAndGetValueSelected();
 
-        if (keyOpenVsCode == 1)
+        if (keyOpenVsCode == 2)
         {
             var filePath = ReadJsons[key];
             using Process process = new();
@@ -44,7 +40,7 @@ public class SendRequestToAzureFunction
         }
 
         var fileString = await ReadJsons.RedByKey(key).ConfigureAwait(false);
-        var azureFunctionApi = RestService.For<IAzureFunctionRequest>("http://localhost:7042");
+        var azureFunctionApi = RestService.For<IAzureFunctionRequest>(AzureFunctionUrl);
         var resultApi = await azureFunctionApi.SendRequest(fileName, new RequestAzureFunction(fileString));
         if (resultApi.IsSuccessStatusCode)
         {
@@ -52,6 +48,6 @@ public class SendRequestToAzureFunction
             return;
         }
 
-        Console.WriteLine("Erro ao executar o procedimento", resultApi.Error);
+        Console.WriteLine("Erro ao executar o procedimento {0}", resultApi.Error);
     }
 }
