@@ -4,8 +4,8 @@ namespace Infrastructure;
 public class ReadJsons : IReadJsons
 {
     private string FolderJsons { get; }
-    private Dictionary<int, string> FilesPath { get; } = new Dictionary<int, string>();
-    public Dictionary<int, string> FilesNames { get; } = new Dictionary<int, string>();
+    private Dictionary<int, string> FilesPath { get; } = [];
+    public Dictionary<int, string> FilesNames { get; } = [];
     public ReadJsons()
     {
         FolderJsons = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Storage");
@@ -16,16 +16,16 @@ public class ReadJsons : IReadJsons
     {
         get
         {
-            if (!FilesPath.ContainsKey(key)) return string.Empty;
-            return FilesPath[key];
+            if (!FilesPath.TryGetValue(key, out string? value)) return string.Empty;
+            return value;
         }
     }
 
     public async Task<string> RedByKey(int key)
     {
-        if (!FilesPath.ContainsKey(key)) return string.Empty;
+        if (!FilesPath.TryGetValue(key, out string? value)) return string.Empty;
 
-        return await File.ReadAllTextAsync(FilesPath[key]).ConfigureAwait(false);
+        return await File.ReadAllTextAsync(value).ConfigureAwait(false);
     }
     private void GetFilesName()
     {
